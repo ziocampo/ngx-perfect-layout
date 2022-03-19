@@ -11,6 +11,12 @@
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "sourceMap": true,
+    "paths": {
+      "ngx-perfect-layout": [
+        "dist/ngx-perfect-layout/ngx-perfect-layout",
+        "dist/ngx-perfect-layout"
+      ]
+    },
     "declaration": false,
     "downlevelIteration": true,
     "experimentalDecorators": true,
