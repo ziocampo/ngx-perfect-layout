@@ -1,9 +1,13 @@
 {
-  "name": "ngx-perfect-layout",
+  "name": "@ziocampo/ngx-perfect-layout",
   "version": "0.0.1",
   "peerDependencies": {
     "@angular/common": "^13.2.0",
-    "@angular/core": "^13.2.0"
+    "@angular/core": "^13.2.0",
+    "@angular/routing": "^13.2.0",
+    "@angular/material": "^13.3.0",
+    "@ngx-translate/core": "^14.0.0",
+    "@angular/cdk": "^13.3.0"
   },
   "dependencies": {
     "tslib": "^2.3.0"

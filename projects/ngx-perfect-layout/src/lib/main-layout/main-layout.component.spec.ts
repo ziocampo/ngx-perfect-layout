@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NgxPerfectLayoutComponent } from './ngx-perfect-layout.component';
+import { MainLayoutComponent } from './main-layout.component';
 
-describe('NgxPerfectLayoutComponent', () => {
-  let component: NgxPerfectLayoutComponent;
-  let fixture: ComponentFixture<NgxPerfectLayoutComponent>;
+describe('MainLayoutComponent', () => {
+  let component: MainLayoutComponent;
+  let fixture: ComponentFixture<MainLayoutComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NgxPerfectLayoutComponent ]
+      declarations: [ MainLayoutComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NgxPerfectLayoutComponent);
+    fixture = TestBed.createComponent(MainLayoutComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

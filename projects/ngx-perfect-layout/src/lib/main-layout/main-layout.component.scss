@@ -1,0 +1,77 @@
+@import '../../lineawesome/scss/line-awesome.scss';
+
+:host {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.mat-drawer {
+    min-width: 260px;
+}
+
+.mat-drawer-container {
+    height: 100%;
+}
+
+.mat-drawer-content {
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.mat-toolbar {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    overflow: hidden;
+    position: relative;
+
+    .connection-info {
+        font-size: 0.8em;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        justify-content: space-around;
+        line-height: 1em;
+        .wallet-address {
+            font-size: 0.6em;
+        }
+    }
+}
+
+.working {
+    visibility: hidden;
+    &.visible {
+        visibility: visible;
+    }
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    right: 0px;
+    left: 0px;
+    pointer-events: none;
+    color: var(--accent-lighter-color);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    z-index: 10000;
+
+    .blocks {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+
+        @for $i from 0 through 15 {
+            .block:nth-child(#{$i+1}) {
+                animation-delay: 300ms * $i;
+            }
+        }
+
+        .block {
+            i {
+                font-size: 36px;
+            }
+        }
+    }
+}

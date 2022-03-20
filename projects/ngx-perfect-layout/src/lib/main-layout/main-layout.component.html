@@ -1,0 +1,64 @@
+<mat-toolbar color="primary">
+
+    <div>
+        <button mat-icon-button (click)="drawer.toggle()">
+            <i class="las la-bars"></i>
+        </button>
+    </div>
+
+    <div>
+    </div>
+
+</mat-toolbar>
+
+<mat-drawer-container>
+
+    <mat-drawer #drawer [mode]="(service.smallScreen|async) ? 'push' : 'side'" [opened]="!(service.smallScreen|async)">
+
+        <mat-nav-list *ngIf="menu && menu.length">
+            <a mat-list-item *ngFor="let menuItem of menu" routerLinkActive="active-link"
+                [routerLink]="[menuItem.route]">
+                <i [class]="'las la-fw ' + menuItem.icon"></i>
+                <span class="nav-text">
+                    {{menuItem.displayName | translate}}
+                </span>
+            </a>
+        </mat-nav-list>
+
+        <div class="m-6">
+            <mat-form-field class="full-width">
+                <mat-label>{{'ui.theme'|translate}}</mat-label>
+                <mat-select name="theme" [(ngModel)]="theme">
+                    <mat-option *ngFor="let theme of themes" [value]="theme">
+                        {{theme.displayName}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+    </mat-drawer>
+
+    <mat-drawer-content>
+        <ng-content select="page-content"></ng-content>
+    </mat-drawer-content>
+
+</mat-drawer-container>
+
+
+<mat-toolbar id="footer" color="primary">
+
+</mat-toolbar>
+
+<div class="working" [class.visible]="isWorking">
+    <div class="blocks">
+        <div class="block blink"><i class="las la-fw la-cube"></i></div>
+        <div class="block blink"><i class="las la-fw la-cube"></i></div>
+        <div class="block blink"><i class="las la-fw la-cube"></i></div>
+        <div class="block blink"><i class="las la-fw la-cube"></i></div>
+        <div class="block blink"><i class="las la-fw la-cube"></i></div>
+        <div class="block blink"><i class="las la-fw la-cube"></i></div>
+        <div class="block blink"><i class="las la-fw la-cube"></i></div>
+        <div class="block blink"><i class="las la-fw la-cube"></i></div>
+        <div class="block blink"><i class="las la-fw la-cube"></i></div>
+    </div>
+</div>
