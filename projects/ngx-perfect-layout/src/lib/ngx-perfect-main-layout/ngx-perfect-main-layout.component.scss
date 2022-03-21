@@ -1,7 +1,11 @@
 @import '../../lineawesome/scss/line-awesome.scss';
 
 :host {
-    height: 100%;
+    position: fixed;
+    top:0px;
+    bottom:0px;
+    left:0px;
+    right:0px;
     display: flex;
     flex-direction: column;
 }

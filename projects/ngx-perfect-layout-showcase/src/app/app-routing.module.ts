@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { RouteData } from 'projects/ngx-perfect-layout/src/public-api';
 import { HomePageComponent } from './components/pages/home-page/home-page.component';
 
-const routes: Routes = [
+export const routes: Routes = [
   {
     path: "",
     pathMatch: "full",
@@ -13,7 +13,8 @@ const routes: Routes = [
     path: "home", 
     component: HomePageComponent,
     data:{
-      
+      displayName: "Home",
+      iconClass: "las-home"
     }as RouteData
   }
 ];

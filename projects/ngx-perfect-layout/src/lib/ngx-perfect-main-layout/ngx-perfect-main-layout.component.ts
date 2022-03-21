@@ -4,11 +4,11 @@ import { Theme } from '../../models/theme';
 import { NgxPerfectLayoutService } from '../ngx-perfect-layout.service';
 
 @Component({
-  selector: 'app-main-layout',
-  templateUrl: './main-layout.component.html',
-  styleUrls: ['./main-layout.component.scss']
+  selector: 'ngx-perfect-main-layout',
+  templateUrl: './ngx-perfect-main-layout.component.html',
+  styleUrls: ['./ngx-perfect-main-layout.component.scss']
 })
-export class MainLayoutComponent implements OnInit {
+export class NgxPerfectMainLayoutComponent implements OnInit {
 
   public menu;
 
