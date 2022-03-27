@@ -11,8 +11,9 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { NgxPerfectMainLayoutComponent } from './ngx-perfect-main-layout/ngx-perfect-main-layout.component';
-import { PageContentDirective } from './directives/page-content.directive';
 import { MatButtonModule } from '@angular/material/button';
+import { NgxPerfectPageContentDirective } from './directives/ngx-perfect-page-content.directive';
+import { NgxPerfectPageFooterDirective } from './directives/ngx-perfect-page-footer.directive copy';
 
 class CustomTranslateLoader implements TranslateLoader {
   getTranslation(lang: string): Observable<any> {
@@ -23,7 +24,8 @@ class CustomTranslateLoader implements TranslateLoader {
 @NgModule({
   declarations: [
     NgxPerfectMainLayoutComponent,
-    PageContentDirective
+    NgxPerfectPageContentDirective,
+    NgxPerfectPageFooterDirective
   ],
   imports: [
     MatToolbarModule,
@@ -46,7 +48,8 @@ class CustomTranslateLoader implements TranslateLoader {
   ],
   exports: [
     NgxPerfectMainLayoutComponent,
-    PageContentDirective
+    NgxPerfectPageContentDirective,
+    NgxPerfectPageFooterDirective
   ],
   providers: [
     NgxPerfectLayoutService,

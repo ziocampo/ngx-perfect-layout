@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostBinding, OnInit } from '@angular/core';
 import { Theme } from 'projects/ngx-perfect-layout/src/public-api';
 import { routes } from '../../../app-routing.module';
 
@@ -10,12 +10,19 @@ import { routes } from '../../../app-routing.module';
 export class HomePageComponent implements OnInit {
 
   public routes = routes;
-  public themes: Theme[]=[{
-    displayName:    "Blue tango",
+  public themes: Theme[] = [{
+    displayName: "Blue tango",
     name: "blue-tango-theme"
+  }, {
+    displayName: "Coffee",
+    name: "coffee-theme"
+  }, {
+    displayName: "Relax tango",
+    name: "relax-theme"
   }];
 
-  constructor() { }
+constructor(
+  ) { }
 
   ngOnInit(): void {
   }

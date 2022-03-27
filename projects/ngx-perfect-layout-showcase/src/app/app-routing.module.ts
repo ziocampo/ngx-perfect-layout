@@ -14,7 +14,7 @@ export const routes: Routes = [
     component: HomePageComponent,
     data:{
       displayName: "Home",
-      iconClass: "las-home"
+      iconClass: "la-home"
     }as RouteData
   }
 ];
