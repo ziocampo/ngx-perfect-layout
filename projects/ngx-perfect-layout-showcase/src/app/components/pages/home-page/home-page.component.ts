@@ -17,7 +17,7 @@ export class HomePageComponent implements OnInit {
     displayName: "Coffee",
     name: "coffee-theme"
   }, {
-    displayName: "Relax tango",
+    displayName: "Relax",
     name: "relax-theme"
   }];
 

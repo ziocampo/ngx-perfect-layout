@@ -12,6 +12,27 @@ export class NgxPerfectLayoutService {
 
   constructor(
     private _breakpointObserver: BreakpointObserver
-  ) { }
+  ) {
+
+    _breakpointObserver
+      .observe([
+        Breakpoints.HandsetLandscape,
+        Breakpoints.TabletLandscape,
+        Breakpoints.WebLandscape,
+      ])
+      .subscribe((result) => {
+        this.landscapeLayout.next(result.matches);
+      });
+
+    _breakpointObserver
+      .observe([
+        Breakpoints.Small,
+        Breakpoints.XSmall
+      ])
+      .subscribe((result) => {
+        this.smallScreen.next(result.matches);
+      });
+
+  }
 
 }

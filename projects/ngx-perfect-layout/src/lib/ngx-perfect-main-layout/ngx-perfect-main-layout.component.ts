@@ -13,6 +13,10 @@ import { NgxPerfectLayoutService } from '../ngx-perfect-layout.service';
 })
 export class NgxPerfectMainLayoutComponent implements OnInit {
 
+  
+  @Input()
+  public title: string | undefined;
+
   public menu: MenuItem[] = [];
 
   @Input()
@@ -21,14 +25,14 @@ export class NgxPerfectMainLayoutComponent implements OnInit {
   @Input()
   public theme: string | undefined;
 
-  @Output()
-  public themeChange: EventEmitter<string> = new EventEmitter<string>();
-
   @Input()
   public routes: Routes = [];
 
   @Input()
-  public isWorking: boolean = false;
+  public showWaitingAnimation: boolean = false;
+
+  @Input()
+  public useBackgroundAnimation: boolean = false;
 
   constructor(
     private _overlayContainer: OverlayContainer,

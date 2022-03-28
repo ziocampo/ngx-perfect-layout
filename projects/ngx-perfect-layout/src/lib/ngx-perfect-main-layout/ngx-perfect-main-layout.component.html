@@ -15,7 +15,7 @@
 
     <mat-drawer-container>
 
-        <mat-drawer #drawer [mode]="(service.smallScreen|async) ? 'push' : 'side'"
+        <mat-drawer #drawer [mode]="(service.smallScreen|async) ? 'over' : 'side'"
             [opened]="!(service.smallScreen|async)">
 
             <mat-nav-list *ngIf="menu && menu.length">
@@ -41,8 +41,11 @@
 
         </mat-drawer>
 
-        <mat-drawer-content>
+        <mat-drawer-content [class.animated-gradient-background]="useBackgroundAnimation">
+            <div class="p-6">
+            <h1 *ngIf="title">{{title}}</h1>
             <ng-content select="ngx-perfect-page-content"></ng-content>
+        </div>
         </mat-drawer-content>
 
     </mat-drawer-container>
@@ -54,7 +57,7 @@
 
 </div>
 
-<div class="working" [class.visible]="isWorking">
+<div class="working" [class.visible]="showWaitingAnimation">
     <div class="blocks">
         <div class="block blink"><i class="las la-fw la-cube"></i></div>
         <div class="block blink"><i class="las la-fw la-cube"></i></div>
