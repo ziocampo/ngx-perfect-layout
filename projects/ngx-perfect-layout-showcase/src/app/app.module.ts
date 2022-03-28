@@ -9,11 +9,13 @@ import { AppComponent } from './app.component';
 import { HomePageComponent } from './components/pages/home-page/home-page.component';
 import { FormsModule } from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
+import { NoOptionsPageComponent } from './components/pages/no-options-page/no-options-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomePageComponent
+    HomePageComponent,
+    NoOptionsPageComponent
   ],
   imports: [
     BrowserModule,

@@ -4,20 +4,43 @@ The perfect layout for your Angular app: responsiveness, eye candy and many othe
 
 ## Why?
 
-Because in each project based on the Angular framework I was copy/pasting the wheel, changing small details every time. Elder projects would not benefit from the enhancements made in newer ones. A general frustration arose.
+Because in each project based on the Angular framework I was copy/pasting the wheel, changing small details every time. Elder projects would not benefit from the enhancements made in new ones. A general frustration arose.
 
 ## Features
 
-### Developer friendly.
+### Developer friendly
 
-Just import 
+Just import the module in the app.module.ts
 
-### A good layout, optimized for responsiveness.
+```typescript
+import { NgxPerfectLayoutModule } from '@ziocampo/ngx-perfect-layout';
+
+imports: [
+    NgxPerfectLayoutModule,
+]
+```
+
+Then use the component in any page you want
+
+```html
+<ngx-perfect-main-layout>
+    <ngx-perfect-page-content>
+        This is the page content.
+    </ngx-perfect-page-content>
+    <ngx-perfect-page-footer>
+        This is the footer content
+    </ngx-perfect-page-footer>
+</ngx-perfect-main-layout>
+```
+
+For more details refer to the showcase project.
+
+### A good layout, optimized for responsiveness
 
 
 
-### A nice "wait" indicator.
-### Support for your own themes.
+### A nice "wait" indicato
+### Support for your own themes
 
 ## Build
 
