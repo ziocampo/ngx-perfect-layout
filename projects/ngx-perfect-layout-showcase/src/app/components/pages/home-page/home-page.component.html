@@ -1,5 +1,20 @@
-<ngx-perfect-main-layout [routes]="routes" [themes]="themes" title="Home!">
+<ngx-perfect-main-layout [routes]="routes" [themes]="themes" [useBackgroundAnimation]="useBackgroundAnimation"
+    [title]="title" [showWaitingAnimation]="showWaitingAnimation">
     <ngx-perfect-page-content>
+        <mat-card>
+            <div>
+                <mat-form-field>
+                    <mat-label>Favorite food</mat-label>
+                    <input matInput [(ngModel)]="title" placeholder="Page title">
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-slide-toggle [(ngModel)]="useBackgroundAnimation">Use background animation</mat-slide-toggle>
+            </div>
+            <div>
+                <mat-slide-toggle [(ngModel)]="showWaitingAnimation">Show the "waiting animation"</mat-slide-toggle>
+            </div>
+        </mat-card>
         <mat-card style="white-space: pre-line;">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
             dolore magna aliqua. Aenean vel elit scelerisque mauris. In dictum non consectetur a. In iaculis nunc

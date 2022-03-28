@@ -1,1 +1,5 @@
 @import 'app/themes/themes.scss';
+
+.mat-toolbar-row, .mat-toolbar-single-row {
+    height: 64px;
+  }

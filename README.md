@@ -1,14 +1,23 @@
 # NgxPerfectLayout
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.5.
+The perfect layout for your Angular app: responsiveness, eye candy and many other features.
 
-## Development server
+## Why?
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Because in each project based on the Angular framework I was copy/pasting the wheel, changing small details every time. Elder projects would not benefit from the enhancements made in newer ones. A general frustration arose.
 
-## Code scaffolding
+## Features
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Developer friendly.
+
+Just import 
+
+### A good layout, optimized for responsiveness.
+
+
+
+### A nice "wait" indicator.
+### Support for your own themes.
 
 ## Build
 

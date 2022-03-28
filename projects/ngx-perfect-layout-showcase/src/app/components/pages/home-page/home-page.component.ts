@@ -21,6 +21,10 @@ export class HomePageComponent implements OnInit {
     name: "relax-theme"
   }];
 
+  public useBackgroundAnimation:boolean = false;
+  public showWaitingAnimation:boolean = false;
+  public title:string = "Title!";
+
 constructor(
   ) { }
 

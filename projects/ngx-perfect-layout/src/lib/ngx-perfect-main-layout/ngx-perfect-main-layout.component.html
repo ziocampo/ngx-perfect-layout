@@ -16,7 +16,7 @@
     <mat-drawer-container>
 
         <mat-drawer #drawer [mode]="(service.smallScreen|async) ? 'over' : 'side'"
-            [opened]="!(service.smallScreen|async)">
+            [opened]="!(service.smallScreen|async)" [class.animated-gradient-background]="useBackgroundAnimation">
 
             <mat-nav-list *ngIf="menu && menu.length">
                 <a mat-list-item *ngFor="let menuItem of menu" routerLinkActive="active-link"
@@ -41,11 +41,11 @@
 
         </mat-drawer>
 
-        <mat-drawer-content [class.animated-gradient-background]="useBackgroundAnimation">
+        <mat-drawer-content>
             <div class="p-6">
-            <h1 *ngIf="title">{{title}}</h1>
-            <ng-content select="ngx-perfect-page-content"></ng-content>
-        </div>
+                <h1 *ngIf="title">{{title}}</h1>
+                <ng-content select="ngx-perfect-page-content"></ng-content>
+            </div>
         </mat-drawer-content>
 
     </mat-drawer-container>
@@ -55,18 +55,19 @@
         <ng-content select="ngx-perfect-page-footer"></ng-content>
     </mat-toolbar>
 
+    <div class="working" [class.visible]="showWaitingAnimation">
+        <div class="blocks">
+            <div class="block blink"><i class="las la-fw la-square-full"></i></div>
+            <div class="block blink"><i class="las la-fw la-square-full"></i></div>
+            <div class="block blink"><i class="las la-fw la-square-full"></i></div>
+            <div class="block blink"><i class="las la-fw la-square-full"></i></div>
+            <div class="block blink"><i class="las la-fw la-square-full"></i></div>
+            <div class="block blink"><i class="las la-fw la-square-full"></i></div>
+            <div class="block blink"><i class="las la-fw la-square-full"></i></div>
+            <div class="block blink"><i class="las la-fw la-square-full"></i></div>
+            <div class="block blink"><i class="las la-fw la-square-full"></i></div>
+        </div>
+    </div>
+
 </div>
 
-<div class="working" [class.visible]="showWaitingAnimation">
-    <div class="blocks">
-        <div class="block blink"><i class="las la-fw la-cube"></i></div>
-        <div class="block blink"><i class="las la-fw la-cube"></i></div>
-        <div class="block blink"><i class="las la-fw la-cube"></i></div>
-        <div class="block blink"><i class="las la-fw la-cube"></i></div>
-        <div class="block blink"><i class="las la-fw la-cube"></i></div>
-        <div class="block blink"><i class="las la-fw la-cube"></i></div>
-        <div class="block blink"><i class="las la-fw la-cube"></i></div>
-        <div class="block blink"><i class="las la-fw la-cube"></i></div>
-        <div class="block blink"><i class="las la-fw la-cube"></i></div>
-    </div>
-</div>
