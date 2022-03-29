@@ -10,7 +10,7 @@ Because in each project based on the Angular framework I was copy/pasting the wh
 
 ### Developer friendly
 
-Just import the module in the app.module.ts
+Just import the module in your app.module.ts
 
 ```typescript
 import { NgxPerfectLayoutModule } from '@ziocampo/ngx-perfect-layout';
@@ -20,7 +20,7 @@ imports: [
 ]
 ```
 
-Then use the component in any page you want
+Then use the component in any page you want:
 
 ```html
 <ngx-perfect-main-layout>
@@ -35,14 +35,60 @@ Then use the component in any page you want
 
 For more details refer to the showcase project.
 
-### A good layout, optimized for responsiveness
+🔥 Hint: you could even use it on the app.component.tml itself, putting the ```router-outlet``` inside the ```ngx-perfect-page-content```.
 
+### A decent layout, optimized for responsiveness
 
+Layout automatically adapts to many resolutions, from large panels to small ones.
 
-### A nice "wait" indicato
-### Support for your own themes
+Snap points are the ones that come with the [@angular/flex-layout](https://www.npmjs.com/package/@angular/flex-layout) package.
 
-## Build
+![Layout image 1](images/layout1.png "Layout image 1")
+
+![Layout image 2](images/layout2.png "Layout image 2")
+
+### A nice "wait" animation
+
+Just by toggling a bool option you can display a nice wait animation.
+
+```html
+[showWaitingAnimation]="true"
+```
+
+![Wait animation image 1](images/wait1.png "Wait animation image 1")
+
+### Support for your own themes or for the standard ones
+
+It supports standard Angular themes (Indigo Pink etc.) as well as custom ones you can craft manually or at [Material Theme Generator](https://materialtheme.arcsine.dev/)
+
+To provide a list of custom themes declare a list of Theme objects:
+
+```typescript
+import { Theme } from '@ziocampo/ngx-perfect-layout';
+
+public themes: Theme[] = [{
+    displayName: "Blue tango",
+    name: "blue-tango-theme"
+}, {
+    displayName: "Coffee",
+    name: "coffee-theme"
+}, {
+    displayName: "Relax",
+    name: "relax-theme"
+}];
+```
+
+then assign it to the themes parameter:
+
+```html
+[themes]="themes"
+```
+
+The themes will be displayed in a ```mat-select``` within the app drawer and applied upon the ```(selectionChange)```.
+
+![With standard theme image 1](images/with-standard-theme1.png "With standard theme image 1")
+
+## Options
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 

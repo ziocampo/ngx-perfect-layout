@@ -28,8 +28,10 @@
                 </a>
             </mat-nav-list>
 
+            <ng-content select="ngx-perfect-page-drawer"></ng-content>
+
             <div class="m-6">
-                <mat-form-field class="full-width">
+                <mat-form-field class="full-width" *ngIf="themes?.length">
                     <mat-label>{{'ui.theme'|translate}}</mat-label>
                     <mat-select name="theme" [(ngModel)]="theme" (selectionChange)="onThemeSelectionChange($event)">
                         <mat-option *ngFor="let theme of themes" [value]="theme.name">

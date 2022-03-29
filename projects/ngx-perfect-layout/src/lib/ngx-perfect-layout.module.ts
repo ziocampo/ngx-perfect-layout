@@ -10,10 +10,11 @@ import { MatListModule } from '@angular/material/list';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { NgxPerfectMainLayoutComponent } from './ngx-perfect-main-layout/ngx-perfect-main-layout.component';
 import { MatButtonModule } from '@angular/material/button';
+import { NgxPerfectMainLayoutComponent } from './ngx-perfect-main-layout/ngx-perfect-main-layout.component';
 import { NgxPerfectPageContentDirective } from './directives/ngx-perfect-page-content.directive';
-import { NgxPerfectPageFooterDirective } from './directives/ngx-perfect-page-footer.directive copy';
+import { NgxPerfectPageFooterDirective } from './directives/ngx-perfect-page-footer.directive';
+import { NgxPerfectPageDrawerDirective } from './directives/ngx-perfect-page-drawer.directive';
 
 class CustomTranslateLoader implements TranslateLoader {
   getTranslation(lang: string): Observable<any> {
@@ -25,7 +26,8 @@ class CustomTranslateLoader implements TranslateLoader {
   declarations: [
     NgxPerfectMainLayoutComponent,
     NgxPerfectPageContentDirective,
-    NgxPerfectPageFooterDirective
+    NgxPerfectPageFooterDirective,
+    NgxPerfectPageDrawerDirective
   ],
   imports: [
     MatToolbarModule,
@@ -49,7 +51,8 @@ class CustomTranslateLoader implements TranslateLoader {
   exports: [
     NgxPerfectMainLayoutComponent,
     NgxPerfectPageContentDirective,
-    NgxPerfectPageFooterDirective
+    NgxPerfectPageFooterDirective,
+    NgxPerfectPageDrawerDirective
   ],
   providers: [
     NgxPerfectLayoutService,
