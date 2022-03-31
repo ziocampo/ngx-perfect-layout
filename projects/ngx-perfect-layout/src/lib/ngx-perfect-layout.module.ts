@@ -18,7 +18,11 @@ import { NgxPerfectPageDrawerDirective } from './directives/ngx-perfect-page-dra
 
 class CustomTranslateLoader implements TranslateLoader {
   getTranslation(lang: string): Observable<any> {
-    return of({ ui: { theme: "tema" } });
+    switch (lang) {
+      case "it":
+        return of({ ui: { theme: "tema" } });
+    }
+    return of({ ui: { theme: "theme" } });
   }
 }
 

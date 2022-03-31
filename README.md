@@ -35,7 +35,18 @@ Then use the component in any page you want:
 
 For more details refer to the showcase project.
 
-🔥 Hint: you could even use it on the app.component.tml itself, putting the ```router-outlet``` inside the ```ngx-perfect-page-content```.
+🔥 You could even use it on the app.component.tml itself, putting the ```router-outlet``` inside the ```ngx-perfect-page-content```.
+
+```html
+<ngx-perfect-main-layout>
+    <ngx-perfect-page-content>
+        <router-outlet></router-outlet>
+    </ngx-perfect-page-content>
+    <ngx-perfect-page-footer>
+        This is the footer content
+    </ngx-perfect-page-footer>
+</ngx-perfect-main-layout>
+```
 
 ### A decent layout, optimized for responsiveness
 
@@ -59,9 +70,9 @@ Just by toggling a bool option you can display a nice wait animation.
 
 ### Support for your own themes or for the standard ones
 
-It supports standard Angular themes (Indigo Pink etc.) as well as custom ones you can craft manually or at [Material Theme Generator](https://materialtheme.arcsine.dev/)
+NgxPerfectLayout supports standard Angular themes (Indigo Pink etc.) as well as custom ones you can craft manually or at [Material Theme Generator](https://materialtheme.arcsine.dev/)
 
-To provide a list of custom themes declare a list of Theme objects:
+To provide a list of custom themes just import them as usual in your ```styles.scss``` and declare a list of ```Theme``` objects:
 
 ```typescript
 import { Theme } from '@ziocampo/ngx-perfect-layout';
@@ -78,7 +89,7 @@ public themes: Theme[] = [{
 }];
 ```
 
-then assign it to the themes parameter:
+then assign it to the ```themes``` parameter:
 
 ```html
 [themes]="themes"
@@ -86,20 +97,49 @@ then assign it to the themes parameter:
 
 The themes will be displayed in a ```mat-select``` within the app drawer and applied upon the ```(selectionChange)```.
 
-![With standard theme image 1](images/with-standard-theme1.png "With standard theme image 1")
+![With standard theme image 1](images/themes-menu1.png "With standard theme image 1")
+
+### Menu from angular routes, the easy way
+
+When you define your routes, just add a ```data``` element of type ```RouteData```
+
+```typescript
+import { RouteData } from '@ziocampo/ngx-perfect-layout';
+
+export const routes: Routes = [
+  {
+    path: "",
+    pathMatch: "full",
+    redirectTo: "home"
+  },
+  {
+    path: "home", 
+    component: HomePageComponent,
+    data:{
+      displayName: "Home",
+      iconClass: "la-home"
+    } as RouteData
+  },
+  {
+    path: "no-options", 
+    component: NoOptionsPageComponent,
+    data:{
+      displayName: "No options",
+      iconClass: "la-broom"
+    } as RouteData
+  }
+];
+
+```
+
+then pass your routes to the ```menu``` parameter. Routes containing a ```RouteData``` element with a ```displayName``` will be shown as navigation.
 
 ## Options
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+| Option                 | Meaning                                                                                                   | Type    | Default value |
+|------------------------|-----------------------------------------------------------------------------------------------------------|---------|---------------|
+| title                  | The title of the page. If provided the page will display an H1 tag with the title.                        | string  | undefined     |
+| routes                 | A Routes object.                                                                                          | Routes  | undefined     |
+| themes                 | An array of Theme objects. If provided there will be a select in the drawer to allow switching the theme. | Theme[] | []            |
+| showWaitingAnimation   | If set to true a nice wait animation will be shown.                                                       | boolean | false         |
+| useBackgroundAnimation | If set to true a nice animated background will be shown on the drawer.                                    | boolean | false         |

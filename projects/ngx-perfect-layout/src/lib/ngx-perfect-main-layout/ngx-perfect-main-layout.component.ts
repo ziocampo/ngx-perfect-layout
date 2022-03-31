@@ -13,12 +13,11 @@ import { NgxPerfectLayoutService } from '../ngx-perfect-layout.service';
 })
 export class NgxPerfectMainLayoutComponent implements OnInit {
 
-  
+  /** The title of the page. If provided the page will display an H1 tag with the title. */
   @Input()
   public title: string | undefined;
 
-  public menu: MenuItem[] = [];
-
+  /**  */
   @Input()
   public themes: Theme[] = [];
 
@@ -27,6 +26,8 @@ export class NgxPerfectMainLayoutComponent implements OnInit {
 
   @Input()
   public routes: Routes = [];
+
+  public menu: MenuItem[] = [];
 
   @Input()
   public showWaitingAnimation: boolean = false;
