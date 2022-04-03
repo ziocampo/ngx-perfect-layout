@@ -45,7 +45,7 @@ export class NgxPerfectMainLayoutComponent implements OnInit {
   ngOnInit(): void {
 
     this.menu = this.routes
-      .filter(o => !!(o.data ? ["displayName"] : ""))
+      .filter(o => !!(o.data ? o.data["displayName"] : ""))
       .map(o => {
         return {
           route: `/${o.path}`,

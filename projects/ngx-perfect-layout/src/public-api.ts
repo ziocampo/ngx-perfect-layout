@@ -11,3 +11,4 @@ export * from './models/theme';
 export * from './lib/directives/ngx-perfect-page-content.directive';
 export * from './lib/directives/ngx-perfect-page-drawer.directive';
 export * from './lib/directives/ngx-perfect-page-footer.directive';
+export * from './lib/directives/ngx-perfect-grid-with-gap.directive';
