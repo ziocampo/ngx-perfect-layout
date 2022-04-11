@@ -13,40 +13,53 @@ Because in each project based on the Angular framework I was copy/pasting the wh
 Just import the module in your app.module.ts
 
 ```typescript
-import { NgxPerfectLayoutModule } from '@ziocampo/ngx-perfect-layout';
+import { NgxPerfectLayoutModule, NgxPerfectLayoutService } from '@ziocampo/ngx-perfect-layout';
 
 imports: [
     NgxPerfectLayoutModule,
+],  
+providers: [
+    NgxPerfectLayoutService
 ]
 ```
 
-Then use the component in any page you want:
+Then use the component right in the app.component.html:
 
 ```html
 <ngx-perfect-main-layout>
+    <ngx-perfect-page-header-left>
+        header left zone
+    </ngx-perfect-page-header-left>
+    <ngx-perfect-page-header-right>
+        header right zone
+    </ngx-perfect-page-header-right>
     <ngx-perfect-page-content>
-        This is the page content.
+        <router-outlet></router-outlet>
     </ngx-perfect-page-content>
-    <ngx-perfect-page-footer>
-        This is the footer content
-    </ngx-perfect-page-footer>
+    <ngx-perfect-page-footer-left>
+        footer left zone
+    </ngx-perfect-page-footer-left>
+    <ngx-perfect-page-footer-right>
+        footer right zone
+    </ngx-perfect-page-footer-right>
 </ngx-perfect-main-layout>
 ```
 
 For more details refer to the showcase project.
 
-🔥 You could even use it on the app.component.tml itself, putting the ```router-outlet``` inside the ```ngx-perfect-page-content```.
+### Service centerer for options
 
-```html
-<ngx-perfect-main-layout>
-    <ngx-perfect-page-content>
-        <router-outlet></router-outlet>
-    </ngx-perfect-page-content>
-    <ngx-perfect-page-footer>
-        This is the footer content
-    </ngx-perfect-page-footer>
-</ngx-perfect-main-layout>
+NgxPerfectLayout is centered around the NgxPerfectLayoutService. Any options you should want to set are there. In any component you can ask for the service by DI:
+
+```typescript
+import { NgxPerfectLayoutService } from '@ziocampo/ngx-perfect-layout';
+
+constructor(
+  private _layoutService: NgxPerfectLayoutService
+) { }
 ```
+
+and then set some option as shown below.
 
 ### A decent layout, optimized for responsiveness
 
@@ -63,7 +76,7 @@ Snap points are the ones that come with the [@angular/flex-layout](https://www.n
 Just by toggling a bool option you can display a nice wait animation.
 
 ```html
-[showWaitingAnimation]="true"
+this._layoutService.showWaitingAnimation = true;
 ```
 
 ![Wait animation image 1](images/wait1.png "Wait animation image 1")
@@ -92,7 +105,7 @@ public themes: Theme[] = [{
 then assign it to the ```themes``` parameter:
 
 ```html
-[themes]="themes"
+this._layoutService.themes = themes;
 ```
 
 The themes will be displayed in a ```mat-select``` within the app drawer and applied upon the ```(selectionChange)```.
@@ -132,9 +145,13 @@ export const routes: Routes = [
 
 ```
 
-then pass your routes to the ```menu``` parameter. Routes containing a ```RouteData``` element with a ```displayName``` will be shown as navigation.
+then pass your routes to the ```routes``` parameter. Routes containing a ```RouteData``` element with a ```displayName``` will be shown as navigation.
 
-## Options
+```typescript
+this._layoutService.routes = routes;
+```
+
+## All the options
 
 | Option                 | Meaning                                                                                                   | Type    | Default value |
 |------------------------|-----------------------------------------------------------------------------------------------------------|---------|---------------|
