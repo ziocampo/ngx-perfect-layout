@@ -1,14 +1,27 @@
-<div [class]="theme" class="mat-body-1 layout">
+<div [class]="service.theme" class="mat-body-1 layout" [class.login-mode]="service.loginMode">
 
-    <mat-toolbar color="primary">
+    <mat-toolbar color="primary" class="header" >
 
         <div>
-            <button mat-icon-button (click)="drawer.toggle()">
+            <button *ngIf="service.hamburgerMenuButtonPosition == 'left'" mat-icon-button (click)="drawer.toggle()">
                 <i class="las la-bars"></i>
             </button>
         </div>
 
         <div>
+            <ng-content select="ngx-perfect-page-header-left"></ng-content>
+        </div>
+
+        <div></div>
+
+        <div>
+            <ng-content select="ngx-perfect-page-header-right"></ng-content>
+        </div>
+
+        <div>
+            <button *ngIf="service.hamburgerMenuButtonPosition == 'right'" mat-icon-button (click)="drawer.toggle()">
+                <i class="las la-bars"></i>
+            </button>
         </div>
 
     </mat-toolbar>
@@ -16,7 +29,10 @@
     <mat-drawer-container>
 
         <mat-drawer #drawer [mode]="(service.smallScreen|async) ? 'over' : 'side'"
-            [opened]="!(service.smallScreen|async)" [class.animated-gradient-background]="useBackgroundAnimation">
+            [opened]="!(service.smallScreen|async)" 
+            [class.animated-gradient-background]="service.useBackgroundAnimation"
+            [position]="service.hamburgerMenuButtonPosition == 'left' ? 'start' : 'end'"
+            >
 
             <mat-nav-list *ngIf="menu && menu.length">
                 <a mat-list-item *ngFor="let menuItem of menu" routerLinkActive="active-link"
@@ -31,9 +47,9 @@
             <ng-content select="ngx-perfect-page-drawer"></ng-content>
 
             <div class="m-6">
-                <mat-form-field class="full-width" *ngIf="themes?.length">
-                    <mat-select name="theme" [(ngModel)]="theme" (selectionChange)="onThemeSelectionChange($event)">
-                        <mat-option *ngFor="let theme of themes" [value]="theme.name">
+                <mat-form-field class="full-width" *ngIf="service.themes?.length">
+                    <mat-select name="theme" [(ngModel)]="service.theme" (selectionChange)="onThemeSelectionChange($event)">
+                        <mat-option *ngFor="let theme of service.themes" [value]="theme.name">
                             {{theme.displayName}}
                         </mat-option>
                     </mat-select>
@@ -43,20 +59,25 @@
         </mat-drawer>
 
         <mat-drawer-content>
-            <div class="p-6">
-                <h1 *ngIf="title">{{title}}</h1>
+            <div class="p-6 page-content">
+                <h1 *ngIf="service.title">{{service.title}}</h1>
                 <ng-content select="ngx-perfect-page-content"></ng-content>
             </div>
         </mat-drawer-content>
 
     </mat-drawer-container>
 
+    <mat-toolbar color="primary" class="footer">
 
-    <mat-toolbar id="footer" color="primary">
-        <ng-content select="ngx-perfect-page-footer"></ng-content>
+        <ng-content select="ngx-perfect-page-footer-left"></ng-content>
+
+        <div></div>
+
+        <ng-content select="ngx-perfect-page-footer-right"></ng-content>
+
     </mat-toolbar>
 
-    <div class="working" [class.visible]="showWaitingAnimation">
+    <div class="working" [class.visible]="service.showWaitingAnimation">
         <div class="blocks">
             <div class="block blink"><i class="las la-fw la-square-full"></i></div>
             <div class="block blink"><i class="las la-fw la-square-full"></i></div>
@@ -72,3 +93,6 @@
 
 </div>
 
+<div [class]="service.theme" class="mat-body-1 layout" *ngIf="service.loginMode">
+    <ng-content select="ngx-perfect-login-content"></ng-content>
+</div>

@@ -13,27 +13,7 @@ import { NgxPerfectLayoutService } from '../ngx-perfect-layout.service';
 })
 export class NgxPerfectMainLayoutComponent implements OnInit {
 
-  /** The title of the page. If provided the page will display an H1 tag with the title. */
-  @Input()
-  public title: string | undefined;
-
-  /**  */
-  @Input()
-  public themes: Theme[] = [];
-
-  @Input()
-  public theme: string | undefined;
-
-  @Input()
-  public routes: Routes = [];
-
   public menu: MenuItem[] = [];
-
-  @Input()
-  public showWaitingAnimation: boolean = false;
-
-  @Input()
-  public useBackgroundAnimation: boolean = false;
 
   constructor(
     private _overlayContainer: OverlayContainer,
@@ -44,7 +24,7 @@ export class NgxPerfectMainLayoutComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.menu = this.routes
+    this.menu = this.service.routes
       .filter(o => !!(o.data ? o.data["displayName"] : ""))
       .map(o => {
         return {
@@ -54,17 +34,17 @@ export class NgxPerfectMainLayoutComponent implements OnInit {
         }
       })
 
-    if (this.themes && this.themes.length) {
-      this.theme = this.themes[0].name;
-      this._overlayContainer.getContainerElement().classList.add(this.theme);
+    if (this.service.themes && this.service.themes.length) {
+      this.service.theme = this.service.themes[0].name;
+      this._overlayContainer.getContainerElement().classList.add(this.service.theme);
     }
 
   }
 
 
   public onThemeSelectionChange(event: MatSelectChange) {
-    if (this.theme) {
-      this._overlayContainer.getContainerElement().classList.add(this.theme);
+    if (this.service.theme) {
+      this._overlayContainer.getContainerElement().classList.add(this.service.theme);
     }
   }
 

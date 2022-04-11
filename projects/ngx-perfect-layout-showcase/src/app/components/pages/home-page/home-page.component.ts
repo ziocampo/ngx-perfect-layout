@@ -1,6 +1,5 @@
 import { Component, HostBinding, OnInit } from '@angular/core';
-import { Theme } from 'projects/ngx-perfect-layout/src/public-api';
-import { routes } from '../../../app-routing.module';
+import { NgxPerfectLayoutService } from 'projects/ngx-perfect-layout/src/lib/ngx-perfect-layout.service';
 
 @Component({
   selector: 'app-home-page',
@@ -9,23 +8,9 @@ import { routes } from '../../../app-routing.module';
 })
 export class HomePageComponent implements OnInit {
 
-  public routes = routes;
-  public themes: Theme[] = [{
-    displayName: "Blue tango",
-    name: "blue-tango-theme"
-  }, {
-    displayName: "Coffee",
-    name: "coffee-theme"
-  }, {
-    displayName: "Relax",
-    name: "relax-theme"
-  }];
-
-  public useBackgroundAnimation:boolean = false;
-  public showWaitingAnimation:boolean = false;
-  public title:string = "Title!";
 
 constructor(
+  public layoutService: NgxPerfectLayoutService
   ) { }
 
   ngOnInit(): void {

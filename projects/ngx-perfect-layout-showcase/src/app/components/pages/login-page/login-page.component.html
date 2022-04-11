@@ -1,0 +1,23 @@
+<mat-card style="min-width:300px;height:50%;">
+
+    <form style="display:flex; flex-direction: column; justify-content: center; align-content:center">
+
+        <mat-form-field appearance="standard">
+            <mat-label>Login</mat-label>
+            <input matInput name="email">
+        </mat-form-field>
+
+        <mat-form-field appearance="standard">
+            <mat-label>Password</mat-label>
+            <input matInput name="password">
+        </mat-form-field>
+
+        <mat-slide-toggle name="trustDevice">
+            Trust this device
+        </mat-slide-toggle>
+
+        <button mat-raised-button color="primary" (click)="onLoginButtonClick()">Login</button>
+
+    </form>
+
+</mat-card>
