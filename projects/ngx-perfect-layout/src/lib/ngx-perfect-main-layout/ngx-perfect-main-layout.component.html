@@ -1,11 +1,11 @@
 <div [class]="service.theme" class="mat-body-1 layout" [class.login-mode]="service.loginMode">
 
-    <mat-toolbar color="primary" class="header" >
+    <mat-toolbar color="primary" class="header">
 
         <div>
-            <button *ngIf="service.hamburgerMenuButtonPosition == 'left'" mat-icon-button (click)="drawer.toggle()">
-                <i class="las la-bars"></i>
-            </button>
+            <div *ngIf="service.hamburgerMenuButtonPosition == 'left'" class="hamburger" [class.open]="drawer.opened" (click)="drawer.toggle()">
+                <div class="line"></div>
+            </div>
         </div>
 
         <div>
@@ -19,9 +19,9 @@
         </div>
 
         <div>
-            <button *ngIf="service.hamburgerMenuButtonPosition == 'right'" mat-icon-button (click)="drawer.toggle()">
-                <i class="las la-bars"></i>
-            </button>
+            <div *ngIf="service.hamburgerMenuButtonPosition == 'right'" class="hamburger" [class.open]="drawer.opened" (click)="drawer.toggle()">
+                <div class="line"></div>
+            </div>
         </div>
 
     </mat-toolbar>
@@ -29,10 +29,9 @@
     <mat-drawer-container>
 
         <mat-drawer #drawer [mode]="(service.smallScreen|async) ? 'over' : 'side'"
-            [opened]="!(service.smallScreen|async)" 
+            [opened]="!(service.smallScreen|async)"
             [class.animated-gradient-background]="service.useBackgroundAnimation"
-            [position]="service.hamburgerMenuButtonPosition == 'left' ? 'start' : 'end'"
-            >
+            [position]="service.hamburgerMenuButtonPosition == 'left' ? 'start' : 'end'">
 
             <mat-nav-list *ngIf="menu && menu.length">
                 <a mat-list-item *ngFor="let menuItem of menu" routerLinkActive="active-link"
@@ -48,7 +47,8 @@
 
             <div class="m-6">
                 <mat-form-field class="full-width" *ngIf="service.themes?.length">
-                    <mat-select name="theme" [(ngModel)]="service.theme" (selectionChange)="onThemeSelectionChange($event)">
+                    <mat-select name="theme" [(ngModel)]="service.theme"
+                        (selectionChange)="onThemeSelectionChange($event)">
                         <mat-option *ngFor="let theme of service.themes" [value]="theme.name">
                             {{theme.displayName}}
                         </mat-option>

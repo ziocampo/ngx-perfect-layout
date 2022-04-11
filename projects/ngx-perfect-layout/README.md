@@ -160,3 +160,5 @@ this._layoutService.routes = routes;
 | themes                 | An array of Theme objects. If provided there will be a select in the drawer to allow switching the theme. | Theme[] | []            |
 | showWaitingAnimation   | If set to true a nice wait animation will be shown.                                                       | boolean | false         |
 | useBackgroundAnimation | If set to true a nice animated background will be shown on the drawer.                                    | boolean | false         |
+| loginMode | If set to true hides anything not compatible with a login page, e.g.: drawer. | boolean | false         |
+| hamburgerMenuButtonPosition | Position of the drawer and fo the drawer tobble. | "left", "right" | "left" |
