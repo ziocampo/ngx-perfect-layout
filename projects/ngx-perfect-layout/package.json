@@ -1,6 +1,6 @@
 {
   "name": "@ziocampo/ngx-perfect-layout",
-  "version": "0.1.9",
+  "version": "0.1.8",
   "peerDependencies": {
     "@angular/animations": "^13.2.0",
     "@angular/cdk": "^13.3.0",
