@@ -58,6 +58,15 @@
 
 .mat-drawer {
     min-width: 260px;
+
+    .mat-expansion-panel {
+        box-shadow: none;
+
+        .mat-expansion-panel-header {
+            padding: 0px 16px 0px 0px;
+        }
+    }
+
 }
 
 .mat-drawer-container {
@@ -72,10 +81,12 @@
     display: grid;
     overflow: hidden;
     position: relative;
-    &.header{
+
+    &.header {
         grid-template-columns: auto auto 1fr auto auto;
     }
-    &.footer{
+
+    &.footer {
         grid-template-columns: auto 1fr auto;
     }
 }

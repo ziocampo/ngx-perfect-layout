@@ -28,6 +28,24 @@ export const routes: Routes = [
     }as RouteData
   },
   {
+    path: "child1", 
+    component: NoOptionsPageComponent,
+    data:{
+      displayName: "Child 1",
+      iconClass: "la-broom",
+      groupName:"With children"
+    }as RouteData
+  },
+  {
+    path: "child2", 
+    component: NoOptionsPageComponent,
+    data:{
+      displayName: "No options",
+      iconClass: "la-stream",
+      groupName: "With children"
+    }as RouteData
+  },
+  {
     path: "login", 
     component: LoginPageComponent,
     data:{

@@ -1,11 +1,11 @@
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatSelectChange } from '@angular/material/select';
-import { Routes } from '@angular/router';
+import { Routes, Route } from '@angular/router';
 import { MenuItem } from '../../models/menu-item';
 import { Theme } from '../../models/theme';
 import { NgxPerfectLayoutService } from '../ngx-perfect-layout.service';
-
+import {RouteData} from '../../models/route-data';
 @Component({
   selector: 'ngx-perfect-main-layout',
   templateUrl: './ngx-perfect-main-layout.component.html',
@@ -24,15 +24,30 @@ export class NgxPerfectMainLayoutComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.menu = this.service.routes
-      .filter(o => !!(o.data ? o.data["displayName"] : ""))
-      .map(o => {
-        return {
-          route: `/${o.path}`,
-          displayName: o.data ? o.data["displayName"] : "",
-          icon: o.data ? o.data["iconClass"] : ""
+    const menu: MenuItem[] = [];
+    
+    for(const route of this.service.routes){
+
+        if(route.data){
+
+          const routeData = route.data as RouteData;
+
+          if(routeData.groupName){
+            let group = menu.find(o=>o.displayName == routeData.groupName);
+            if(!group){
+              group = {displayName: routeData.groupName, icon: 'la-folder', children:[]};
+              menu.push(group);
+            }
+            group.children!.push({displayName: routeData.displayName, icon: routeData.iconClass, route: `/${route.path}`})
+          }else if(routeData.displayName){
+            menu.push({displayName: routeData.displayName, icon: routeData.iconClass, route: `/${route.path}`});
+          }
+
         }
-      })
+
+    }
+    
+    this.menu = menu;
 
     if (this.service.themes && this.service.themes.length) {
       this.service.theme = this.service.themes[0].name;

@@ -151,6 +151,33 @@ then pass your routes to the ```routes``` parameter. Routes containing a ```Rout
 this._layoutService.routes = routes;
 ```
 
+If you want to have hierarchical menus (just one level) you can group menu items by adding a ```groupName:string``` property in the ```RouteData``` element:
+
+```typescript
+  {
+    path: "child1", 
+    component: NoOptionsPageComponent,
+    data:{
+      displayName: "Child 1",
+      iconClass: "la-broom",
+      groupName:"With children"
+    }as RouteData
+  },
+  {
+    path: "child2", 
+    component: NoOptionsPageComponent,
+    data:{
+      displayName: "No options",
+      iconClass: "la-stream",
+      groupName: "With children"
+    }as RouteData
+  },
+```
+
+Your hierarchical menu will be displayed as an expansion panel:
+
+![Menu with children image 1](images/menu-with-children1.png "Menu with children image 1")
+
 ## All the options
 
 | Option                 | Meaning                                                                                                   | Type    | Default value |

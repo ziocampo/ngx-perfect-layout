@@ -1,6 +1,6 @@
 <div [class]="service.theme" class="mat-body-1 layout" [class.login-mode]="service.loginMode">
 
-    <mat-toolbar color="primary" class="header" >
+    <mat-toolbar color="primary" class="header">
 
         <div>
             <button *ngIf="service.hamburgerMenuButtonPosition == 'left'" mat-icon-button (click)="drawer.toggle()">
@@ -29,26 +29,54 @@
     <mat-drawer-container>
 
         <mat-drawer #drawer [mode]="(service.smallScreen|async) ? 'over' : 'side'"
-            [opened]="!(service.smallScreen|async)" 
+            [opened]="!(service.smallScreen|async)"
             [class.animated-gradient-background]="service.useBackgroundAnimation"
-            [position]="service.hamburgerMenuButtonPosition == 'left' ? 'start' : 'end'"
-            >
+            [position]="service.hamburgerMenuButtonPosition == 'left' ? 'start' : 'end'">
 
             <mat-nav-list *ngIf="menu && menu.length">
-                <a mat-list-item *ngFor="let menuItem of menu" routerLinkActive="active-link"
-                    [routerLink]="[menuItem.route]">
-                    <i [class]="'las la-fw ' + menuItem.icon"></i>
-                    <span class="nav-text">
-                        {{menuItem.displayName | translate}}
-                    </span>
-                </a>
+
+                <ng-container *ngFor="let menuItem of menu">
+
+                    <a mat-list-item *ngIf="menuItem.route" routerLinkActive="active-link"
+                        [routerLink]="[menuItem.route]">
+                        <i [class]="'las la-fw ' + menuItem.icon"></i>
+                        <span>
+                            {{menuItem.displayName | translate}}
+                        </span>
+                    </a>
+
+                    <mat-expansion-panel *ngIf="menuItem.children" (opened)="menuItem.open = true"
+                    (closed)="menuItem.open = false">
+
+                        <mat-expansion-panel-header>
+                            <a mat-list-item>
+                                <i class="las la-fw" [class.la-folder-open]="menuItem.open" [class.la-folder]="!menuItem.open"></i>
+                                <span>
+                                    {{menuItem.displayName | translate}}
+                                </span>
+                            </a>
+                        </mat-expansion-panel-header>
+
+                        <a mat-list-item *ngFor="let subMenuItem of menuItem.children" routerLinkActive="active-link"
+                            [routerLink]="[subMenuItem.route]">
+                            <i [class]="'las la-fw ' + subMenuItem.icon"></i>
+                            <span>
+                                {{subMenuItem.displayName | translate}}
+                            </span>
+                        </a>
+
+                    </mat-expansion-panel>
+
+                </ng-container>
+
             </mat-nav-list>
 
             <ng-content select="ngx-perfect-page-drawer"></ng-content>
 
             <div class="m-6">
                 <mat-form-field class="full-width" *ngIf="service.themes?.length">
-                    <mat-select name="theme" [(ngModel)]="service.theme" (selectionChange)="onThemeSelectionChange($event)">
+                    <mat-select name="theme" [(ngModel)]="service.theme"
+                        (selectionChange)="onThemeSelectionChange($event)">
                         <mat-option *ngFor="let theme of service.themes" [value]="theme.name">
                             {{theme.displayName}}
                         </mat-option>
@@ -60,7 +88,7 @@
 
         <mat-drawer-content>
             <div class="p-6 page-content">
-                <h1 *ngIf="service.title">{{service.title}}</h1>
+                <h1 *ngIf="service.title">{{service.title|translate}}</h1>
                 <ng-content select="ngx-perfect-page-content"></ng-content>
             </div>
         </mat-drawer-content>

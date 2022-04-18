@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { NgxPerfectMainLayoutComponent } from './ngx-perfect-main-layout/ngx-perfect-main-layout.component';
 import { NgxPerfectZonesDirectives } from './directives/ngx-perfect-zones.directive';
+import {MatExpansionModule} from '@angular/material/expansion'; 
 
 class CustomTranslateLoader implements TranslateLoader {
   getTranslation(lang: string): Observable<any> {
@@ -37,6 +38,7 @@ class CustomTranslateLoader implements TranslateLoader {
     MatSelectModule,
     MatListModule,
     MatButtonModule,
+    MatExpansionModule,
     CommonModule,
     RouterModule,
     FormsModule,
