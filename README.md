@@ -2,6 +2,8 @@
 
 The perfect layout for your Angular app: responsiveness, eye candy and many other features.
 
+[Demo](https://ngx-perfect-layout.pages.dev/home)
+
 ## Why?
 
 Because in each project based on the Angular framework I was copy/pasting the wheel, changing small details every time. Elder projects would not benefit from the enhancements made in new ones. A general frustration arose.
@@ -67,9 +69,9 @@ Layout automatically adapts to many resolutions, from large panels to small ones
 
 Snap points are the ones that come with the [@angular/flex-layout](https://www.npmjs.com/package/@angular/flex-layout) package.
 
-![Layout image 1](images/layout1.png "Layout image 1")
+![Layout image 1](assets/images/layout1.png "Layout image 1")
 
-![Layout image 2](images/layout2.png "Layout image 2")
+![Layout image 2](assets/images/layout2.png "Layout image 2")
 
 ### A nice "wait" animation
 
@@ -79,7 +81,7 @@ Just by toggling a bool option you can display a nice wait animation.
 this._layoutService.showWaitingAnimation = true;
 ```
 
-![Wait animation image 1](images/wait1.png "Wait animation image 1")
+![Wait animation image 1](assets/images/wait1.png "Wait animation image 1")
 
 ### Support for your own themes or for the standard ones
 
@@ -110,7 +112,7 @@ this._layoutService.themes = themes;
 
 The themes will be displayed in a ```mat-select``` within the app drawer and applied upon the ```(selectionChange)```.
 
-![With standard theme image 1](images/themes-menu1.png "With standard theme image 1")
+![With standard theme image 1](assets/images/themes-menu1.png "With standard theme image 1")
 
 ### Menu from angular routes, the easy way
 
@@ -176,7 +178,7 @@ If you want to have hierarchical menus (just one level) you can group menu items
 
 Your hierarchical menu will be displayed as an expansion panel:
 
-![Menu with children image 1](images/menu-with-children1.png "Menu with children image 1")
+![Menu with children image 1](assets/images/menu-with-children1.png "Menu with children image 1")
 
 ## All the options
 
