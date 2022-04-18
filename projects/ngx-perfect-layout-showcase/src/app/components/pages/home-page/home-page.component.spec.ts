@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NgxPerfectLayoutComponent } from './ngx-perfect-layout.component';
+import { HomePageComponent } from './home-page.component';
 
-describe('NgxPerfectLayoutComponent', () => {
-  let component: NgxPerfectLayoutComponent;
-  let fixture: ComponentFixture<NgxPerfectLayoutComponent>;
+describe('HomePageComponent', () => {
+  let component: HomePageComponent;
+  let fixture: ComponentFixture<HomePageComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NgxPerfectLayoutComponent ]
+      declarations: [ HomePageComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NgxPerfectLayoutComponent);
+    fixture = TestBed.createComponent(HomePageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,0 +1,18 @@
+.loading {
+    position:relative;
+    &::after {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        content: '';
+        border-radius: 4px;
+        animation: pulse 1s infinite alternate;
+      }
+    
+      @keyframes pulse {
+        from { background-color: var(--accent-lighter-color); }
+        to { background-color: var(--accent-darker-color); }
+    }
+}

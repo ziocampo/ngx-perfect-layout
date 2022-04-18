@@ -1,0 +1,13 @@
+@import './animated-gradient-background.scss';
+@import './blink.scss';
+@import './loading.scss';
+@import './shake.scss';
+@import './skeleton.scss';
+@import './spin.scss';
+@import './spacing.scss';
+@import './grids.scss';
+
+.mat-toolbar-row, .mat-toolbar-single-row {
+    height: auto;
+    min-height: 48px;
+  }

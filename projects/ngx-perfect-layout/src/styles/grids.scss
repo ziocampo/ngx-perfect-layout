@@ -1,0 +1,39 @@
+@import "node_modules/@angular/flex-layout/core/sass/_layout-bp.scss";
+@import './spacing.scss';
+
+.grid{
+  display: grid;
+}
+
+.grid-with-gap{
+  @extend .gap-3;
+  @extend .grid;
+}
+
+.grid-with-gap-responsive{
+  @extend .grid-with-gap;
+
+  @include layout-bp(gt-xl) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  @include layout-bp(xl) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  @include layout-bp(lg) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include layout-bp(md) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include layout-bp(sm) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include layout-bp(xs) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
