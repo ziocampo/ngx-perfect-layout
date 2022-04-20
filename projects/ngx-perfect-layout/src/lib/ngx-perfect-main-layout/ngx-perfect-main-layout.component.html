@@ -40,7 +40,7 @@
                     <a mat-list-item *ngIf="menuItem.route" routerLinkActive="active-link"
                         [routerLink]="[menuItem.route]">
                         <i [class]="'las la-fw ' + menuItem.icon"></i>
-                        <span>
+                        <span class="ml-3">
                             {{menuItem.displayName | translate}}
                         </span>
                     </a>
@@ -51,7 +51,7 @@
                         <mat-expansion-panel-header>
                             <a mat-list-item>
                                 <i class="las la-fw" [class.la-folder-open]="menuItem.open" [class.la-folder]="!menuItem.open"></i>
-                                <span>
+                                <span class="ml-3">
                                     {{menuItem.displayName | translate}}
                                 </span>
                             </a>
@@ -60,7 +60,7 @@
                         <a mat-list-item *ngFor="let subMenuItem of menuItem.children" routerLinkActive="active-link"
                             [routerLink]="[subMenuItem.route]">
                             <i [class]="'las la-fw ' + subMenuItem.icon"></i>
-                            <span>
+                            <span class="ml-3">
                                 {{subMenuItem.displayName | translate}}
                             </span>
                         </a>
