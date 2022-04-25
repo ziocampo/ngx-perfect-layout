@@ -23,6 +23,7 @@ export class NgxPerfectLayoutService {
   public loginMode: boolean = true;
   public useBackgroundAnimation: boolean = false;
   public hamburgerMenuButtonPosition: "left" | "right" = "left";
+  public menuMinWidth: string = "260px";
 
   public landscapeLayout: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   public smallScreen: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);

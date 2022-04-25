@@ -31,7 +31,9 @@
         <mat-drawer #drawer [mode]="(service.smallScreen|async) ? 'over' : 'side'"
             [opened]="!(service.smallScreen|async)"
             [class.animated-gradient-background]="service.useBackgroundAnimation"
-            [position]="service.hamburgerMenuButtonPosition == 'left' ? 'start' : 'end'">
+            [position]="service.hamburgerMenuButtonPosition == 'left' ? 'start' : 'end'"
+            [style.width]="service.menuMinWidth"
+            >
 
             <mat-nav-list *ngIf="menu && menu.length">
 
