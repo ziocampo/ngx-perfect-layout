@@ -18,7 +18,7 @@ Just import the module in your app.module.ts
 import { NgxPerfectLayoutModule, NgxPerfectLayoutService } from '@ziocampo/ngx-perfect-layout';
 
 imports: [
-    NgxPerfectLayoutModule,
+  NgxPerfectLayoutModule,
 ],  
 providers: [
     NgxPerfectLayoutService
@@ -190,4 +190,5 @@ Your hierarchical menu will be displayed as an expansion panel:
 | showWaitingAnimation   | If set to true a nice wait animation will be shown.                                                       | boolean | false         |
 | useBackgroundAnimation | If set to true a nice animated background will be shown on the drawer.                                    | boolean | false         |
 | loginMode | If set to true hides anything not compatible with a login page, e.g.: drawer. | boolean | false         |
-| hamburgerMenuButtonPosition | Position of the drawer and fo the drawer tobble. | "left", "right" | "left" |
+| hamburgerMenuButtonPosition | Position of the drawer and drawer toggle. | "left", "right" | "left" |
+| menuMinWidth | Minimum width of the menu, can be any CSS unit. | string | "260px" |
