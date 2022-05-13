@@ -69,11 +69,23 @@
 
     .mat-drawer-content {
         overflow: hidden;
-    }
 
-    .page-content{
-        height: 100%;
-        overflow: hidden;
+        .page-content {
+            height: 100%;
+            overflow: hidden;
+            box-sizing: border-box;
+            display: grid;
+            grid-template-rows: auto 1fr;
+            
+            ::ng-deep {
+                ngx-perfect-page-content {
+                    height: 100%;
+                    overflow: hidden;
+                    display: block;
+                }
+            }
+        }
+
     }
 
 }
