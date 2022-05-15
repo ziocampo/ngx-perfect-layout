@@ -28,6 +28,8 @@ export class NgxPerfectLayoutService {
   public landscapeLayout: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   public smallScreen: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
+  private _storagePrefix = "@NgxPerfectLayout";
+
   constructor(
     private _breakpointObserver: BreakpointObserver
   ) {
@@ -51,6 +53,40 @@ export class NgxPerfectLayoutService {
         this.smallScreen.next(result.matches);
       });
 
+  }
+
+  public getLocalValue<T>(key: string, valueIfEmpty?: any): T
+  {
+    const v = localStorage.getItem(`${this._storagePrefix}.${key}`);
+    if (v)
+    {
+      return JSON.parse(v) as T || valueIfEmpty;
+    }
+    else
+    {
+      return valueIfEmpty;
+    }
+  }
+  public setLocalValue<T>(key: string, v: T)
+  {
+    localStorage.setItem(`${this._storagePrefix}.${key}`, JSON.stringify(v));
+  }
+
+  public getSessionValue<T>(key: string, valueIfEmpty?: any): T
+  {
+    const v = sessionStorage.getItem(`${this._storagePrefix}.${key}`);
+    if (v)
+    {
+      return JSON.parse(v) as T || valueIfEmpty;
+    }
+    else
+    {
+      return valueIfEmpty;
+    }
+  }
+  public setSessionValue<T>(key: string, v: T)
+  {
+    sessionStorage.setItem(`${this._storagePrefix}.${key}`, JSON.stringify(v));
   }
 
 }

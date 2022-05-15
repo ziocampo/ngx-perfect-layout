@@ -1,0 +1,47 @@
+<div class="toolbar">
+    <div>
+        <div class="actions">
+            <button *ngIf="canAdd" mat-button (click)="onAddItemButtonClick()" color="primary"><i class="las la-plus-circle la-fw"></i><span class="button-text">{{'actions.add'|translate}}</span></button>
+        </div>
+    </div>
+
+    <div>
+        <mat-paginator [length]="filteredItems.length" [pageIndex]="currentPageIndex" [pageSize]="currentPageSize"
+                       [pageSizeOptions]="[5, 10, 25, 100]" (page)="onPaginationChanged($event)"></mat-paginator>
+    </div>
+</div>
+
+
+<div class="table-container">
+
+    <table mat-table [dataSource]="currentItems" matSort
+           (matSortChange)="onSortChanged($event.active, $event.direction)">
+
+        <ng-container *ngFor="let column of columns">
+            <ng-container matColumnDef="{{column.id}}">
+                <th mat-header-cell mat-sort-header *matHeaderCellDef [disabled]="!column.sortable">
+                    {{column.headerText|translate}}
+                </th>
+                <td mat-cell [style]="column.cellStyle" *matCellDef="let item" [innerHTML]="(column.format ? column.format(item[column.id]) : item[column.id]) | safe:'html'"></td>
+            </ng-container>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+            <th mat-header-cell mat-sort-header *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let element" class="actions">
+
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+        <tr mat-row
+            *matRowDef="let row; columns: displayedColumns; let i = index"
+            [class.selected]="selectedRowFunction(row)"
+            (click)="onItemClicked(i, row)"></tr>
+
+    </table>
+
+</div>
+
+<mat-paginator [length]="filteredItems.length" [pageIndex]="currentPageIndex" [pageSize]="currentPageSize"
+               [pageSizeOptions]="[5, 10, 25, 100]" (page)="onPaginationChanged($event)"></mat-paginator>

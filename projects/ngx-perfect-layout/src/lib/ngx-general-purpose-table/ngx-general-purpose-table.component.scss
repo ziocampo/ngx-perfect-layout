@@ -1,0 +1,68 @@
+:host {
+  display:grid;
+  grid-template-rows: auto 1fr auto;
+  height:100%;
+  overflow:hidden;
+}
+
+.toolbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 56px;
+
+  > div {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+    > div {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+    }
+  }
+}
+
+.mat-paginator {
+  background-color: transparent;
+}
+
+.table-container {
+  width: 100%;
+  overflow-y: auto;
+  margin-top: 6px;
+  flex: 1;
+
+  .mat-table {
+    width: 100%;
+  }
+
+  .mat-row {
+    cursor: pointer;
+
+    .mat-cell {
+      padding: 4px;
+    }
+
+    &.selected {
+      background-color: #EEEEEE;
+    }
+  }
+
+  .mat-row:hover {
+    background-color: #EEEEEE;
+  }
+}
+
+.actions {
+  text-align: right;
+  white-space: nowrap;
+
+  .la {
+    font-size: 24px;
+  }
+}
