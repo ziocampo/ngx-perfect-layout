@@ -13,13 +13,15 @@ import { NoOptionsPageComponent } from './components/pages/no-options-page/no-op
 import { LoginPageComponent } from './components/pages/login-page/login-page.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
+import { MainLayoutComponent } from './components/layouts/main-layout/main-layout.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomePageComponent,
     NoOptionsPageComponent,
-    LoginPageComponent
+    LoginPageComponent,
+    MainLayoutComponent
   ],
   imports: [
     BrowserModule,
