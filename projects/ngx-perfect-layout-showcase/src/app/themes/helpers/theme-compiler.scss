@@ -1,0 +1,83 @@
+@use '@angular/material' as mat;
+@use "sass:string";
+@use 'sass:list';
+
+@import 'color-scheme-generator.scss';
+@import 'str-replace.scss';
+@import 'hex-functions.scss';
+@import 'str-to-color.scss';
+
+$google-font-name-for-url: str-replace($google-font-name, ' ', '+');
+@import url('https://fonts.googleapis.com/css2?family=#{$google-font-name-for-url}:wght@300;400;500&display=swap');
+
+$fontConfig: (
+  display-4: mat.m2-define-typography-level(112px, 112px, 300, $google-font-name, -0.0134em),
+  display-3: mat.m2-define-typography-level(56px, 56px, 400, $google-font-name, -0.0089em),
+  display-2: mat.m2-define-typography-level(45px, 48px, 400, $google-font-name, 0.0000em),
+  display-1: mat.m2-define-typography-level(34px, 40px, 400, $google-font-name, 0.0074em),
+  headline: mat.m2-define-typography-level(24px, 32px, 400, $google-font-name, 0.0000em),
+  title: mat.m2-define-typography-level(20px, 32px, 500, $google-font-name, 0.0075em),
+  subheading-2: mat.m2-define-typography-level(16px, 28px, 400, $google-font-name, 0.0094em),
+  subheading-1: mat.m2-define-typography-level(15px, 24px, 500, $google-font-name, 0.0067em),
+  body-2: mat.m2-define-typography-level(14px, 24px, 500, $google-font-name, 0.0179em),
+  body-1: mat.m2-define-typography-level(14px, 20px, 400, $google-font-name, 0.0179em),
+  button: mat.m2-define-typography-level(14px, 14px, 500, $google-font-name, 0.0893em),
+  caption: mat.m2-define-typography-level(12px, 20px, 400, $google-font-name, 0.0333em),
+  input: mat.m2-define-typography-level(inherit, 1.125, 400, $google-font-name, 1.5px)
+);
+
+$theme-colors-from-palette: string.slice($theme-palette-coolors, 20);
+$theme-colors: string.split($theme-colors-from-palette, "-");
+
+$primary-color: str-to-color(list.nth($theme-colors, 1));
+$accent-color: str-to-color(list.nth($theme-colors, 2));
+$warn-color: str-to-color(list.nth($theme-colors, 3));
+$bright-color: str-to-color(list.nth($theme-colors, 4));
+$dark-color: str-to-color(list.nth($theme-colors, 5));
+
+$primary-colors: createPalette($primary-color, $bright-color, $dark-color);
+$primary-palette: mat.m2-define-palette($primary-colors);
+
+$accent-colors: createPalette($accent-color, $bright-color, $dark-color);
+$accent-palette: mat.m2-define-palette($accent-colors);
+
+$warn-colors: createPalette($warn-color, $bright-color, $dark-color);
+$warn-palette: mat.m2-define-palette($warn-colors);
+
+$dark-theme: mat.m2-define-dark-theme((color: (primary: mat.m2-define-palette($primary-palette), accent: mat.m2-define-palette($accent-palette), warn: mat.m2-define-palette($warn-palette)), density: -1, ));
+$light-theme: mat.m2-define-light-theme((color: (primary: mat.m2-define-palette($primary-palette), accent: mat.m2-define-palette($accent-palette), warn: mat.m2-define-palette($warn-palette)), density: -1, ));
+
+.#{$theme-name}-theme {
+  --card-background: #{mat.m2-get-color-from-palette($primary-palette, default-contrast)};
+  --mat-badge-text-color: #{mat.m2-get-color-from-palette($primary-palette, default-contrast)};
+  --mat-stepper-header-edit-state-icon-foreground-color: #{mat.m2-get-color-from-palette($primary-palette, default-contrast)};
+  --primary-color: #{mat.m2-get-color-from-palette($primary-palette, default)};
+  --primary-lighter-color: #{mat.m2-get-color-from-palette($primary-palette, lighter)};
+  --primary-darker-color: #{mat.m2-get-color-from-palette($primary-palette, darker)};
+  --text-primary-color: #{mat.m2-get-color-from-palette($primary-palette, default-contrast)};
+  --text-primary-lighter-color: #{mat.m2-get-color-from-palette($primary-palette, lighter-contrast)};
+  --text-primary-darker-color: #{mat.m2-get-color-from-palette($primary-palette, darker-contrast)};
+  --accent-color: #{mat.m2-get-color-from-palette($accent-palette, default)};
+  --accent-lighter-color: #{mat.m2-get-color-from-palette($accent-palette, lighter)};
+  --accent-darker-color: #{mat.m2-get-color-from-palette($accent-palette, darker)};
+  --text-accent-color: #{mat.m2-get-color-from-palette($accent-palette, default-contrast)};
+  --text-accent-lighter-color: #{mat.m2-get-color-from-palette($accent-palette, lighter-contrast)};
+  --text-accent-darker-color: #{mat.m2-get-color-from-palette($accent-palette, darker-contrast)};
+  --warn-color: #{mat.m2-get-color-from-palette($warn-palette, default)};
+  --warn-lighter-color: #{mat.m2-get-color-from-palette($warn-palette, lighter)};
+  --warn-darker-color: #{mat.m2-get-color-from-palette($warn-palette, darker)};
+  --text-warn-color: #{mat.m2-get-color-from-palette($warn-palette, default-contrast)};
+  --text-warn-lighter-color: #{mat.m2-get-color-from-palette($warn-palette, lighter-contrast)};
+  --text-warn-darker-color: #{mat.m2-get-color-from-palette($warn-palette, darker-contrast)};
+
+  @include mat.all-component-typographies($fontConfig);
+  @include mat.all-component-themes($light-theme);
+
+  @media (prefers-color-scheme: dark) {
+    @include mat.all-component-colors($dark-theme);
+  }
+
+  @media (prefers-color-scheme: light) {
+    @include mat.all-component-colors($light-theme);
+  }
+}
