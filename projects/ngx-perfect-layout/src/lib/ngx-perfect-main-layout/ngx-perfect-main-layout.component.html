@@ -1,4 +1,4 @@
-<div [class]="service.theme" class="mat-body-1 layout" [class.login-mode]="service.loginMode">
+<div [class]="service.theme" class="mat-body-2 layout" [class.login-mode]="service.loginMode">
 
     <mat-toolbar color="primary" class="header">
 
@@ -123,6 +123,6 @@
 
 </div>
 
-<div [class]="service.theme" class="mat-body-1 layout" *ngIf="service.loginMode">
+<div [class]="service.theme" class="mat-body-2 layout" *ngIf="service.loginMode">
     <ng-content select="ngx-perfect-login-content"></ng-content>
 </div>

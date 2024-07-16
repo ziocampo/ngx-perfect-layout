@@ -27,7 +27,7 @@
   }
 }
 
-.mat-paginator {
+.mat-mdc-paginator {
   background-color: transparent;
 }
 
@@ -37,14 +37,14 @@
   margin-top: 6px;
   flex: 1;
 
-  .mat-table {
+  .mat-mdc-table {
     width: 100%;
   }
 
-  .mat-row {
+  .mat-mdc-row {
     cursor: pointer;
 
-    .mat-cell {
+    .mat-mdc-cell {
       padding: 4px;
     }
 
@@ -53,7 +53,7 @@
     }
   }
 
-  .mat-row:hover {
+  .mat-mdc-row:hover {
     background-color: #EEEEEE;
   }
 }
