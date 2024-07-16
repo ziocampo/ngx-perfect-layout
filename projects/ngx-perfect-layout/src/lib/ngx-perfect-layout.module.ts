@@ -14,8 +14,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { NgxPerfectMainLayoutComponent } from './ngx-perfect-main-layout/ngx-perfect-main-layout.component';
 import { NgxPerfectZonesDirectives } from './directives/ngx-perfect-zones.directive';
 import {MatExpansionModule} from '@angular/material/expansion'; 
-import { NgxGeneralPurposeTableComponent } from './ngx-general-purpose-table/ngx-general-purpose-table.component';
-import { NgxSimpleCrudLayoutComponent } from './ngx-simple-crud-layout/ngx-simple-crud-layout.component';
 
 class CustomTranslateLoader implements TranslateLoader {
   getTranslation(lang: string): Observable<any> {
@@ -30,9 +28,7 @@ class CustomTranslateLoader implements TranslateLoader {
 @NgModule({
   declarations: [
     NgxPerfectMainLayoutComponent,
-    NgxPerfectZonesDirectives,
-    NgxGeneralPurposeTableComponent,
-    NgxSimpleCrudLayoutComponent
+    NgxPerfectZonesDirectives
   ],
   imports: [
     MatToolbarModule,
@@ -56,9 +52,7 @@ class CustomTranslateLoader implements TranslateLoader {
   ],
   exports: [
     NgxPerfectMainLayoutComponent,
-    NgxPerfectZonesDirectives,
-    NgxGeneralPurposeTableComponent,
-    NgxSimpleCrudLayoutComponent
+    NgxPerfectZonesDirectives
   ],
   providers: [
     NgxPerfectLayoutService,
